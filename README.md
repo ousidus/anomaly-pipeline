@@ -2,7 +2,7 @@
 
 ## Overview
 
-A real-time data processing system that ingests industrial sensor data, detects anomalies using machine learning, and visualizes results on operational dashboards.
+A real-time data processing system that ingests  sensor data, detects anomalies using machine learning, and visualizes results on operational dashboards.
 
 ## Architecture
 

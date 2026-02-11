@@ -175,6 +175,30 @@ services:
     command: -url=jdbc:postgresql://timescaledb:5432/sensors -user=postgres -password=postgres migrate
     volumes:
       - ../storage/migrations:/flyway/sql
+  # ----------------------------
+  # FLINK
+  # ----------------------------
+  jobmanager:
+    image: flink:1.18
+    container_name: jobmanager
+    ports:
+      - "8081:8081"
+    command: jobmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+
+  taskmanager:
+    image: flink:1.18
+    container_name: taskmanager
+    depends_on:
+      - jobmanager
+    command: taskmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+  flink-job:
+    build: ../processing/flink-jobs
+    depends_on:
+      - jobmanager
 volumes:
   tsdata:
   grafana:
