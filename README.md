@@ -1,4 +1,4 @@
-# Industrial Real-Time Anomaly Detection Pipeline
+# Real-Time Anomaly Detection Pipeline
 
 ## Overview
 
